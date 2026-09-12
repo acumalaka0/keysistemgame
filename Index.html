@@ -389,7 +389,6 @@
             transform: scale(1.05);
         }
 
-        /* Remove gradient overlay to show full image clearly */
         .game-card-banner::after {
             display: none;
         }
@@ -596,7 +595,6 @@
             padding-right: 6px;
         }
 
-        /* Custom Scrollbar for Features List */
         .features-list::-webkit-scrollbar {
             width: 4px;
         }
@@ -612,7 +610,6 @@
             background: rgba(255, 255, 255, 0.2);
         }
 
-        /* Each Feature Group Card */
         .feature-group {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.06);
@@ -627,7 +624,6 @@
             border-left-color: #60a5fa;
         }
 
-        /* Group Title */
         .feature-group h4 {
             font-size: 15px;
             font-weight: 700;
@@ -652,7 +648,6 @@
             flex-shrink: 0;
         }
 
-        /* Feature Items - Clean Vertical List Rows */
         .feature-group ul {
             list-style: none;
             padding-left: 0;
@@ -704,7 +699,6 @@
             transform: scale(1.15);
         }
 
-        /* VIP Feature Styling */
         .feature-group li.is-vip {
             color: #f472b6;
         }
@@ -713,7 +707,6 @@
             color: #ec4899;
         }
 
-        /* VIP Badge */
         .vip-tag {
             display: inline-flex;
             align-items: center;
@@ -731,7 +724,6 @@
             vertical-align: middle;
         }
 
-        /* Download Section */
         .details-download {
             background: rgba(16, 185, 129, 0.04);
             border: 1px solid rgba(16, 185, 129, 0.12);
@@ -755,7 +747,6 @@
             font-weight: 700;
         }
 
-        /* Download CTA Button */
         .btn-download {
             background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white;
@@ -1142,7 +1133,6 @@
             gap: 20px;
         }
 
-        /* Custom scrollbar for premium hack modal body */
         .hack-modal-body::-webkit-scrollbar {
             width: 6px;
         }
@@ -1157,7 +1147,6 @@
             background: rgba(255, 255, 255, 0.15);
         }
 
-        /* Premium inner styles overrides */
         .hack-modal-content .details-note {
             background: rgba(245, 158, 11, 0.05);
             border: 1px solid rgba(245, 158, 11, 0.15);
@@ -1232,7 +1221,6 @@
             color: #34d399;
         }
 
-        /* VIP Premium Glow inside modal */
         .hack-modal-content .feature-group li.is-vip {
             color: #f472b6;
             font-weight: 600;
@@ -1244,7 +1232,6 @@
             filter: drop-shadow(0 0 4px rgba(244, 114, 182, 0.6));
         }
 
-        /* Premium Download Footer Area */
         .hack-modal-content .details-download {
             background: rgba(255, 255, 255, 0.015);
             border: 1px solid rgba(255, 255, 255, 0.04);
@@ -1285,8 +1272,8 @@
         <!-- Shop Header -->
         <div class="shop-header">
             <div class="brand-info">
-                                    <img src="https://panel.onlytris.io.vn/assets/images/favicon.png" alt="logo" class="brand-img">
-                                <h2>ONLYTRIS PANEL</h2>
+                <img src="https://panel.onlytris.io.vn/assets/images/favicon.png" alt="logo" class="brand-img">
+                <h2>ONLYTRIS PANEL</h2>
             </div>
             
             <div class="search-box">
@@ -1335,233 +1322,156 @@
 
         <!-- Grid Cards -->
         <div class="games-grid" id="gamesGrid">
-                        <div class="game-card" data-name="zingspeed | speed drifter">
-                <!-- Card Banner -->
+            <!-- ZingSpeed Card -->
+            <div class="game-card" data-name="zingspeed | speed drifter">
                 <div class="game-card-banner">
                     <img src="https://play-lh.googleusercontent.com/PPA7szoWNyYV5La9IHwQHBDhe4vLFwdW_L_BB7AC9TjgkIoLD9uESGoOm0N7PG086y9_yJkukKon5URyA6RoxA" alt="ZingSpeed | Speed Drifter" onerror="this.onerror=null; this.src='../assets/icon/default-game.png';">
-                                            <span class="banner-badge-link">
-                            <i class="fas fa-bolt"></i>
-                            1 liên kết
-                        </span>
-                                    </div>
-
-                <!-- Card Body -->
+                    <span class="banner-badge-link">
+                        <i class="fas fa-bolt"></i> 1 liên kết
+                    </span>
+                </div>
                 <div class="game-card-body">
                     <h3 class="game-card-title" title="ZingSpeed | Speed Drifter">ZingSpeed | Speed Drifter</h3>
                     <div class="game-card-meta">
-                        <span class="meta-item">
-                            <i class="fas fa-clock"></i>
-                            <span>24h</span>
-                        </span>
-                        <span class="meta-item">
-                            <i class="fas fa-mobile-alt"></i>
-                            <span>1 Máy</span>
-                        </span>
+                        <span class="meta-item"><i class="fas fa-clock"></i><span>24h</span></span>
+                        <span class="meta-item"><i class="fas fa-mobile-alt"></i><span>1 Máy</span></span>
                     </div>
                 </div>
-
-                <!-- Card Actions -->
                 <div class="game-card-actions">
-                                            <a href="https://panel.onlytris.io.vn/store?user=tePHosbvWpEozqJ4gZAawA&game=com.vng.speedvn"
-                           class="btn-card buy" target="_blank">
-                            <i class="fas fa-shopping-cart"></i>
-                            Mua Key
-                        </a>
-                                        
-                                            <button class="btn-card get" onclick="getkey('com.vng.speedvn')">
-                            <i class="fas fa-key"></i>
-                            Lấy Key                        </button>
-                                    </div>
+                    <a href="https://panel.onlytris.io.vn/store?user=tePHosbvWpEozqJ4gZAawA&game=com.vng.speedvn" class="btn-card buy" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Mua Key
+                    </a>
+                    <button class="btn-card get" onclick="getkey('com.vng.speedvn')">
+                        <i class="fas fa-key"></i> Lấy Key
+                    </button>
+                </div>
+                <div class="game-card-footer">
+                    <button class="btn-card-details" onclick='openHackModal({&quot;name&quot;:&quot;ZingSpeed | Speed Drifter&quot;,&quot;icon&quot;:&quot;https:\/\/play-lh.googleusercontent.com\/PPA7szoWNyYV5La9IHwQHBDhe4vLFwdW_L_BB7AC9TjgkIoLD9uESGoOm0N7PG086y9_yJkukKon5URyA6RoxA&quot;,&quot;note&quot;:&quot;&quot;,&quot;features&quot;:[{&quot;title&quot;:&quot;Chính&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;CWW Nhanh&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Full Nitro + H2O&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Full Mini Boost&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Ra Trận Nhanh&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Gia Tốc Nhanh&quot;,&quot;vip&quot;:false}]},{&quot;title&quot;:&quot;Tốc Biến&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;Tốc Biến Nhấn Phanh&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Tốc Biến Nhấn Drift&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Tuỳ Chỉnh Tốc Độ Tốc Biến&quot;,&quot;vip&quot;:false}]},{&quot;title&quot;:&quot;Phụ&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;Hiển Thị Time Map&quot;,&quot;vip&quot;:true}]}],&quot;download_url&quot;:&quot;https:\/\/drive.google.com\/file\/d\/1Qe57EPPiJQIKrhwzG-8WMVNqLHFdCWHN\/view?usp=drivesdk&quot;,&quot;version&quot;:&quot;1.0&quot;,&quot;download_label&quot;:&quot;Tải Xuống Ngay&quot;})'>
+                        <i class="fas fa-download"></i> Tải Hack & Tính Năng
+                    </button>
+                </div>
+            </div>
 
-                <!-- Card Details Toggle (if hack exists) -->
-                                    <div class="game-card-footer">
-                        <button class="btn-card-details" onclick='openHackModal({&quot;name&quot;:&quot;ZingSpeed | Speed Drifter&quot;,&quot;icon&quot;:&quot;https:\/\/play-lh.googleusercontent.com\/PPA7szoWNyYV5La9IHwQHBDhe4vLFwdW_L_BB7AC9TjgkIoLD9uESGoOm0N7PG086y9_yJkukKon5URyA6RoxA&quot;,&quot;note&quot;:&quot;&quot;,&quot;features&quot;:[{&quot;title&quot;:&quot;Chính&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;CWW Nhanh&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Full Nitro + H2O&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Full Mini Boost&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Ra Trận Nhanh&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Gia Tốc Nhanh&quot;,&quot;vip&quot;:false}]},{&quot;title&quot;:&quot;Tốc Biến&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;Tốc Biến Nhấn Phanh&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Tốc Biến Nhấn Drift&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Tuỳ Chỉnh Tốc Độ Tốc Biến&quot;,&quot;vip&quot;:false}]},{&quot;title&quot;:&quot;Phụ&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;Hiển Thị Time Map&quot;,&quot;vip&quot;:true}]}],&quot;download_url&quot;:&quot;https:\/\/drive.google.com\/file\/d\/1Qe57EPPiJQIKrhwzG-8WMVNqLHFdCWHN\/view?usp=drivesdk&quot;,&quot;version&quot;:&quot;1.0&quot;,&quot;download_label&quot;:&quot;Tải Xuống Ngay&quot;})'>
-                            <i class="fas fa-download"></i> Tải Hack & Tính Năng
-                        </button>
-                    </div>
-                            </div>
-                        <div class="game-card" data-name="mobile legends bang bang">
-                <!-- Card Banner -->
+            <!-- Mobile Legends Card -->
+            <div class="game-card" data-name="mobile legends bang bang">
                 <div class="game-card-banner">
                     <img src="https://play-lh.googleusercontent.com/0gB6KEvQzyQXS6Uscx7HNjjlRMRUzEvYFqWr0TlmwHw6cw3nNRNSR9xChp-EUrk3Cq1lqTlsE1DbPgc97YClXVU=w256" alt="Mobile Legends Bang Bang" onerror="this.onerror=null; this.src='../assets/icon/default-game.png';">
-                                            <span class="banner-badge-link">
-                            <i class="fas fa-bolt"></i>
-                            1 liên kết
-                        </span>
-                                    </div>
-
-                <!-- Card Body -->
+                    <span class="banner-badge-link">
+                        <i class="fas fa-bolt"></i> 1 liên kết
+                    </span>
+                </div>
                 <div class="game-card-body">
                     <h3 class="game-card-title" title="Mobile Legends Bang Bang">Mobile Legends Bang Bang</h3>
                     <div class="game-card-meta">
-                        <span class="meta-item">
-                            <i class="fas fa-clock"></i>
-                            <span>24h</span>
-                        </span>
-                        <span class="meta-item">
-                            <i class="fas fa-mobile-alt"></i>
-                            <span>1 Máy</span>
-                        </span>
+                        <span class="meta-item"><i class="fas fa-clock"></i><span>24h</span></span>
+                        <span class="meta-item"><i class="fas fa-mobile-alt"></i><span>1 Máy</span></span>
                     </div>
                 </div>
-
-                <!-- Card Actions -->
                 <div class="game-card-actions">
-                                            <a href="https://panel.onlytris.io.vn/store?user=tePHosbvWpEozqJ4gZAawA&game=com.mobile.legends"
-                           class="btn-card buy" target="_blank">
-                            <i class="fas fa-shopping-cart"></i>
-                            Mua Key
-                        </a>
-                                        
-                                            <button class="btn-card get" onclick="getkey('com.mobile.legends')">
-                            <i class="fas fa-key"></i>
-                            Lấy Key                        </button>
-                                    </div>
+                    <a href="https://panel.onlytris.io.vn/store?user=tePHosbvWpEozqJ4gZAawA&game=com.mobile.legends" class="btn-card buy" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Mua Key
+                    </a>
+                    <button class="btn-card get" onclick="getkey('com.mobile.legends')">
+                        <i class="fas fa-key"></i> Lấy Key
+                    </button>
+                </div>
+                <div class="game-card-footer">
+                    <button class="btn-card-details" onclick='openHackModal({&quot;name&quot;:&quot;Mobile Legends Bang Bang&quot;,&quot;icon&quot;:&quot;https:\/\/play-lh.googleusercontent.com\/0gB6KEvQzyQXS6Uscx7HNjjlRMRUzEvYFqWr0TlmwHw6cw3nNRNSR9xChp-EUrk3Cq1lqTlsE1DbPgc97YClXVU=w256&quot;,&quot;note&quot;:&quot;&quot;,&quot;features&quot;:[{&quot;title&quot;:&quot;Draw ESP&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;ESP Line&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Box&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Health&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Icon&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Minimap&quot;,&quot;vip&quot;:false}]},{&quot;title&quot;:&quot;Room Info&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;Show Enitity Name&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Show Enitity Hero&quot;,&quot;vip&quot;:false}]}],&quot;download_url&quot;:&quot;https:\/\/t.me\/OnlyTris_Download\/&quot;,&quot;version&quot;:&quot;1.0&quot;,&quot;download_label&quot;:&quot;Tải Xuống Ngay&quot;})'>
+                        <i class="fas fa-download"></i> Tải Hack & Tính Năng
+                    </button>
+                </div>
+            </div>
 
-                <!-- Card Details Toggle (if hack exists) -->
-                                    <div class="game-card-footer">
-                        <button class="btn-card-details" onclick='openHackModal({&quot;name&quot;:&quot;Mobile Legends Bang Bang&quot;,&quot;icon&quot;:&quot;https:\/\/play-lh.googleusercontent.com\/0gB6KEvQzyQXS6Uscx7HNjjlRMRUzEvYFqWr0TlmwHw6cw3nNRNSR9xChp-EUrk3Cq1lqTlsE1DbPgc97YClXVU=w256&quot;,&quot;note&quot;:&quot;&quot;,&quot;features&quot;:[{&quot;title&quot;:&quot;Draw ESP&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;ESP Line&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Box&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Health&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Icon&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Minimap&quot;,&quot;vip&quot;:false}]},{&quot;title&quot;:&quot;Room Info&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;Show Enitity Name&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Show Enitity Hero&quot;,&quot;vip&quot;:false}]}],&quot;download_url&quot;:&quot;https:\/\/t.me\/OnlyTris_Download\/&quot;,&quot;version&quot;:&quot;1.0&quot;,&quot;download_label&quot;:&quot;Tải Xuống Ngay&quot;})'>
-                            <i class="fas fa-download"></i> Tải Hack & Tính Năng
-                        </button>
-                    </div>
-                            </div>
-                        <div class="game-card" data-name="liên quân mobile">
-                <!-- Card Banner -->
+            <!-- Liên Quân Mobile Card -->
+            <div class="game-card" data-name="liên quân mobile">
                 <div class="game-card-banner">
                     <img src="https://img.tapimg.net/market/images/4450f6976373fd3d62862495acc87264.png" alt="Liên Quân Mobile" onerror="this.onerror=null; this.src='../assets/icon/default-game.png';">
-                                            <span class="banner-badge-link">
-                            <i class="fas fa-bolt"></i>
-                            1 liên kết
-                        </span>
-                                    </div>
-
-                <!-- Card Body -->
+                    <span class="banner-badge-link">
+                        <i class="fas fa-bolt"></i> 1 liên kết
+                    </span>
+                </div>
                 <div class="game-card-body">
                     <h3 class="game-card-title" title="Liên Quân Mobile">Liên Quân Mobile</h3>
                     <div class="game-card-meta">
-                        <span class="meta-item">
-                            <i class="fas fa-clock"></i>
-                            <span>24h</span>
-                        </span>
-                        <span class="meta-item">
-                            <i class="fas fa-mobile-alt"></i>
-                            <span>1 Máy</span>
-                        </span>
+                        <span class="meta-item"><i class="fas fa-clock"></i><span>24h</span></span>
+                        <span class="meta-item"><i class="fas fa-mobile-alt"></i><span>1 Máy</span></span>
                     </div>
                 </div>
-
-                <!-- Card Actions -->
                 <div class="game-card-actions">
-                                            <a href="https://panel.onlytris.io.vn/store?user=tePHosbvWpEozqJ4gZAawA&game=com.garena.game.kgvn%2Ccom.garena.game.kgvo"
-                           class="btn-card buy" target="_blank">
-                            <i class="fas fa-shopping-cart"></i>
-                            Mua Key
-                        </a>
-                                        
-                                            <button class="btn-card get" onclick="getkey('com.garena.game.kgvn,com.garena.game.kgvo')">
-                            <i class="fas fa-key"></i>
-                            Lấy Key                        </button>
-                                    </div>
+                    <a href="https://panel.onlytris.io.vn/store?user=tePHosbvWpEozqJ4gZAawA&game=com.garena.game.kgvn%2Ccom.garena.game.kgvo" class="btn-card buy" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Mua Key
+                    </a>
+                    <button class="btn-card get" onclick="getkey('com.garena.game.kgvn,com.garena.game.kgvo')">
+                        <i class="fas fa-key"></i> Lấy Key
+                    </button>
+                </div>
+                <div class="game-card-footer">
+                    <button class="btn-card-details" onclick='openHackModal({&quot;name&quot;:&quot;Liên Quân Mobile&quot;,&quot;icon&quot;:&quot;https:\/\/img.tapimg.net\/market\/images\/4450f6976373fd3d62862495acc87264.png&quot;,&quot;note&quot;:&quot;&quot;,&quot;features&quot;:[{&quot;title&quot;:&quot;Draw ESP&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;ESP Line&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Box&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Monster&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Minimap&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Drone View&quot;,&quot;vip&quot;:false}]}],&quot;download_url&quot;:&quot;https:\/\/t.me\/OnlyTris_Download\/&quot;,&quot;version&quot;:&quot;1.0&quot;,&quot;download_label&quot;:&quot;Tải Xuống Ngay&quot;})'>
+                        <i class="fas fa-download"></i> Tải Hack & Tính Năng
+                    </button>
+                </div>
+            </div>
 
-                <!-- Card Details Toggle (if hack exists) -->
-                                    <div class="game-card-footer">
-                        <button class="btn-card-details" onclick='openHackModal({&quot;name&quot;:&quot;Liên Quân Mobile&quot;,&quot;icon&quot;:&quot;https:\/\/img.tapimg.net\/market\/images\/4450f6976373fd3d62862495acc87264.png&quot;,&quot;note&quot;:&quot;&quot;,&quot;features&quot;:[{&quot;title&quot;:&quot;Draw ESP&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;ESP Line&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Box&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Monster&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Minimap&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Drone View&quot;,&quot;vip&quot;:false}]}],&quot;download_url&quot;:&quot;https:\/\/t.me\/OnlyTris_Download\/&quot;,&quot;version&quot;:&quot;1.0&quot;,&quot;download_label&quot;:&quot;Tải Xuống Ngay&quot;})'>
-                            <i class="fas fa-download"></i> Tải Hack & Tính Năng
-                        </button>
-                    </div>
-                            </div>
-                        <div class="game-card" data-name="bloodstrike">
-                <!-- Card Banner -->
+            <!-- BloodStrike Card -->
+            <div class="game-card" data-name="bloodstrike">
                 <div class="game-card-banner">
                     <img src="http://cdn.onlytris.io.vn/lib/bs.png" alt="BloodStrike" onerror="this.onerror=null; this.src='../assets/icon/default-game.png';">
-                                            <span class="banner-badge-link">
-                            <i class="fas fa-bolt"></i>
-                            1 liên kết
-                        </span>
-                                    </div>
-
-                <!-- Card Body -->
+                    <span class="banner-badge-link">
+                        <i class="fas fa-bolt"></i> 1 liên kết
+                    </span>
+                </div>
                 <div class="game-card-body">
                     <h3 class="game-card-title" title="BloodStrike">BloodStrike</h3>
                     <div class="game-card-meta">
-                        <span class="meta-item">
-                            <i class="fas fa-clock"></i>
-                            <span>24h</span>
-                        </span>
-                        <span class="meta-item">
-                            <i class="fas fa-mobile-alt"></i>
-                            <span>1 Máy</span>
-                        </span>
+                        <span class="meta-item"><i class="fas fa-clock"></i><span>24h</span></span>
+                        <span class="meta-item"><i class="fas fa-mobile-alt"></i><span>1 Máy</span></span>
                     </div>
                 </div>
-
-                <!-- Card Actions -->
                 <div class="game-card-actions">
-                                            <a href="https://panel.onlytris.io.vn/store?user=tePHosbvWpEozqJ4gZAawA&game=com.netease.newspike"
-                           class="btn-card buy" target="_blank">
-                            <i class="fas fa-shopping-cart"></i>
-                            Mua Key
-                        </a>
-                                        
-                                            <button class="btn-card get" onclick="getkey('com.netease.newspike')">
-                            <i class="fas fa-key"></i>
-                            Lấy Key                        </button>
-                                    </div>
+                    <a href="https://panel.onlytris.io.vn/store?user=tePHosbvWpEozqJ4gZAawA&game=com.netease.newspike" class="btn-card buy" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Mua Key
+                    </a>
+                    <button class="btn-card get" onclick="getkey('com.netease.newspike')">
+                        <i class="fas fa-key"></i> Lấy Key
+                    </button>
+                </div>
+                <div class="game-card-footer">
+                    <button class="btn-card-details" onclick='openHackModal({&quot;name&quot;:&quot;BloodStrike&quot;,&quot;icon&quot;:&quot;http:\/\/cdn.onlytris.io.vn\/lib\/bs.png&quot;,&quot;note&quot;:&quot;&quot;,&quot;features&quot;:[],&quot;download_url&quot;:&quot;&quot;,&quot;version&quot;:&quot;1.0&quot;,&quot;download_label&quot;:&quot;Tải Xuống Ngay&quot;})'>
+                        <i class="fas fa-download"></i> Tải Hack & Tính Năng
+                    </button>
+                </div>
+            </div>
 
-                <!-- Card Details Toggle (if hack exists) -->
-                                    <div class="game-card-footer">
-                        <button class="btn-card-details" onclick='openHackModal({&quot;name&quot;:&quot;BloodStrike&quot;,&quot;icon&quot;:&quot;http:\/\/cdn.onlytris.io.vn\/lib\/bs.png&quot;,&quot;note&quot;:&quot;&quot;,&quot;features&quot;:[],&quot;download_url&quot;:&quot;&quot;,&quot;version&quot;:&quot;1.0&quot;,&quot;download_label&quot;:&quot;Tải Xuống Ngay&quot;})'>
-                            <i class="fas fa-download"></i> Tải Hack & Tính Năng
-                        </button>
-                    </div>
-                            </div>
-                        <div class="game-card" data-name="8 ball pool">
-                <!-- Card Banner -->
+            <!-- 8 Ball Pool Card -->
+            <div class="game-card" data-name="8 ball pool">
                 <div class="game-card-banner">
                     <img src="https://m.media-amazon.com/images/I/81OMgLAhLCL.png" alt="8 Ball Pool" onerror="this.onerror=null; this.src='../assets/icon/default-game.png';">
-                                            <span class="banner-badge-link">
-                            <i class="fas fa-bolt"></i>
-                            1 liên kết
-                        </span>
-                                    </div>
-
-                <!-- Card Body -->
+                    <span class="banner-badge-link">
+                        <i class="fas fa-bolt"></i> 1 liên kết
+                    </span>
+                </div>
                 <div class="game-card-body">
                     <h3 class="game-card-title" title="8 Ball Pool">8 Ball Pool</h3>
                     <div class="game-card-meta">
-                        <span class="meta-item">
-                            <i class="fas fa-clock"></i>
-                            <span>24h</span>
-                        </span>
-                        <span class="meta-item">
-                            <i class="fas fa-mobile-alt"></i>
-                            <span>1 Máy</span>
-                        </span>
+                        <span class="meta-item"><i class="fas fa-clock"></i><span>24h</span></span>
+                        <span class="meta-item"><i class="fas fa-mobile-alt"></i><span>1 Máy</span></span>
                     </div>
                 </div>
-
-                <!-- Card Actions -->
                 <div class="game-card-actions">
-                                            <a href="https://panel.onlytris.io.vn/store?user=tePHosbvWpEozqJ4gZAawA&game=com.miniclip.eightballpool"
-                           class="btn-card buy" target="_blank">
-                            <i class="fas fa-shopping-cart"></i>
-                            Mua Key
-                        </a>
-                                        
-                                            <button class="btn-card get" onclick="getkey('com.miniclip.eightballpool')">
-                            <i class="fas fa-key"></i>
-                            Lấy Key                        </button>
-                                    </div>
-
-                <!-- Card Details Toggle (if hack exists) -->
-                                    <div class="game-card-footer">
-                        <button class="btn-card-details" onclick='openHackModal({&quot;name&quot;:&quot;8 Ball Pool&quot;,&quot;icon&quot;:&quot;https:\/\/m.media-amazon.com\/images\/I\/81OMgLAhLCL.png&quot;,&quot;note&quot;:&quot;&quot;,&quot;features&quot;:[],&quot;download_url&quot;:&quot;&quot;,&quot;version&quot;:&quot;1.0&quot;,&quot;download_label&quot;:&quot;Tải Xuống Ngay&quot;})'>
-                            <i class="fas fa-download"></i> Tải Hack & Tính Năng
-                        </button>
-                    </div>
-                            </div>
-            
-                    </div>
+                    <a href="https://panel.onlytris.io.vn/store?user=tePHosbvWpEozqJ4gZAawA&game=com.miniclip.eightballpool" class="btn-card buy" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Mua Key
+                    </a>
+                    <button class="btn-card get" onclick="getkey('com.miniclip.eightballpool')">
+                        <i class="fas fa-key"></i> Lấy Key
+                    </button>
+                </div>
+                <div class="game-card-footer">
+                    <button class="btn-card-details" onclick='openHackModal({&quot;name&quot;:&quot;8 Ball Pool&quot;,&quot;icon&quot;:&quot;https:\/\/m.media-amazon.com\/images\/I\/81OMgLAhLCL.png&quot;,&quot;note&quot;:&quot;&quot;,&quot;features&quot;:[],&quot;download_url&quot;:&quot;&quot;,&quot;version&quot;:&quot;1.0&quot;,&quot;download_label&quot;:&quot;Tải Xuống Ngay&quot;})'>
+                        <i class="fas fa-download"></i> Tải Hack & Tính Năng
+                    </button>
+                </div>
+            </div>
+        </div>
 
         <p class="footer">&copy; 2026 ONLYTRIS PANEL</p>
     </div>
@@ -1635,7 +1545,6 @@
             var token = window._turnstileToken;
             if (!token) {
                 alert('Vui lòng xác minh Turnstile (ô checkbox phía trên) trước khi lấy key.');
-                // Scroll to turnstile widget
                 var banner = document.querySelector('.turnstile-banner');
                 if (banner) banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 return;
@@ -1653,7 +1562,6 @@
                 } else {
                     alert('Không thể tạo key. Vui lòng thử lại.');
                 }
-                // Reset turnstile for next use (token is single-use)
                 window._turnstileToken = null;
                 if (typeof turnstile !== 'undefined') {
                     turnstile.reset('#turnstile-box');
@@ -1678,7 +1586,6 @@
         }
 
         function openHackModal(data) {
-            // Set title and icon
             var headerTitle = document.getElementById('hackModalTitle');
             headerTitle.innerHTML = '';
             if (data.icon) {
@@ -1695,11 +1602,9 @@
             titleSpan.textContent = 'Tính năng Hack: ' + data.name;
             headerTitle.appendChild(titleSpan);
 
-            // Set body content
             var modalBody = document.getElementById('hackModalBody');
             modalBody.innerHTML = '';
 
-            // Note
             if (data.note) {
                 var noteDiv = document.createElement('div');
                 noteDiv.className = 'details-note';
@@ -1708,7 +1613,6 @@
                 modalBody.appendChild(noteDiv);
             }
 
-            // Features List
             if (data.features && data.features.length > 0) {
                 var featuresDiv = document.createElement('div');
                 featuresDiv.className = 'features-list';
@@ -1749,7 +1653,6 @@
                 modalBody.appendChild(featuresDiv);
             }
 
-            // Download Area
             if (data.download_url) {
                 var downloadDiv = document.createElement('div');
                 downloadDiv.className = 'details-download';
@@ -1764,7 +1667,6 @@
                 modalBody.appendChild(downloadDiv);
             }
 
-            // Show modal
             document.getElementById('hackModal').classList.add('show');
         }
 
@@ -1780,7 +1682,6 @@
             document.getElementById('helpModal').classList.remove('show');
         }
 
-        // Close modal when clicking outside content box
         window.onclick = function(event) {
             var helpModal = document.getElementById('helpModal');
             var hackModal = document.getElementById('hackModal');
@@ -1792,7 +1693,6 @@
             }
         }
 
-        // Search Games Filter
         function searchGames() {
             var input = document.getElementById('gameSearch');
             var filter = input.value.toLowerCase().trim();
@@ -1811,7 +1711,6 @@
                 }
             }
 
-            // Xử lý Empty State khi không tìm thấy game nào
             if (visibleCount === 0) {
                 if (!emptyStateExists) {
                     var emptyDiv = document.createElement('div');
@@ -1831,4 +1730,3 @@
     </script>
 </body>
 </html>
-
