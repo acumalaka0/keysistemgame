@@ -1,0 +1,1834 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Key - ONLYTRIS PANEL</title>
+    <link rel="icon" type="image/x-icon" href="https://panel.onlytris.io.vn/assets/images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        window._turnstileToken = null;
+        function onTurnstileSuccess(token) {
+            window._turnstileToken = token;
+            var c = document.getElementById('turnstileContainer');
+            if (c) {
+                c.classList.add('verified');
+                document.getElementById('turnstileIcon').className = 'fas fa-check-circle';
+                document.getElementById('turnstileTitle').textContent = 'Đã xác minh';
+                document.getElementById('turnstileSubtitle').textContent = 'Bạn có thể lấy key — nhấn Get Key bên dưới';
+            }
+        }
+        function onTurnstileExpired() {
+            window._turnstileToken = null;
+            var c = document.getElementById('turnstileContainer');
+            if (c) {
+                c.classList.remove('verified');
+                document.getElementById('turnstileIcon').className = 'fas fa-shield-alt';
+                document.getElementById('turnstileTitle').textContent = 'Xác minh bảo mật';
+                document.getElementById('turnstileSubtitle').textContent = 'Hoàn thành xác minh bên phải để mở khóa Get Key';
+            }
+        }
+    </script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <style>
+        :root {
+            --bg-primary: #0d0f14;
+            --bg-secondary: rgba(26, 29, 38, 0.65);
+            --bg-tertiary: rgba(40, 44, 57, 0.5);
+            --bg-hover: rgba(255, 255, 255, 0.05);
+            --border-primary: rgba(255, 255, 255, 0.08);
+            --border-secondary: rgba(255, 255, 255, 0.15);
+            --text-primary: #fafafa;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --accent-subtle: rgba(59, 130, 246, 0.15);
+            --success: #10b981;
+            --success-subtle: rgba(16, 185, 129, 0.15);
+            --warning: #f59e0b;
+            --warning-subtle: rgba(245, 158, 11, 0.15);
+            --radius: 20px;
+            --radius-md: 14px;
+            --radius-sm: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 24px;
+            -webkit-font-smoothing: antialiased;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Ambient light blurs */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.22) 0%, transparent 55%),
+                radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.18) 0%, transparent 55%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Grid background */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header Style */
+        .shop-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            background: var(--bg-secondary);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--radius);
+            padding: 16px 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .brand-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-img {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            object-fit: cover;
+            border: 1px solid var(--border-secondary);
+        }
+
+        .brand-info h2 {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .search-box input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-primary);
+            border-radius: 100px;
+            padding: 12px 18px 12px 42px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 15px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .search-box input:focus {
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.15);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .btn-help {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-primary);
+            color: var(--text-primary);
+            padding: 12px 22px;
+            border-radius: 100px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .btn-help:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--border-secondary);
+            transform: translateY(-1px);
+        }
+
+        /* Title Area */
+        .section-title {
+            margin-bottom: 24px;
+        }
+
+        .section-title h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .section-title p {
+            font-size: 16px;
+            color: var(--text-secondary);
+        }
+
+        /* Turnstile Verification Banner */
+        .turnstile-banner {
+            margin-bottom: 20px;
+        }
+
+        .turnstile-inner {
+            background: var(--bg-secondary);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-primary);
+            border-left: 3px solid var(--accent);
+            border-radius: var(--radius-md);
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            transition: border-color 0.4s, box-shadow 0.4s;
+        }
+
+        .turnstile-inner.verified {
+            border-left-color: var(--success);
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.08);
+        }
+
+        .turnstile-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .turnstile-icon {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent-subtle);
+            color: var(--accent);
+            border-radius: 12px;
+            font-size: 20px;
+            flex-shrink: 0;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .turnstile-inner.verified .turnstile-icon {
+            background: var(--success-subtle);
+            color: var(--success);
+        }
+
+        .turnstile-text {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .turnstile-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .turnstile-status {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--warning);
+            box-shadow: 0 0 6px rgba(245, 158, 11, 0.5);
+            animation: statusPulse 2s ease-in-out infinite;
+        }
+
+        .turnstile-inner.verified .turnstile-status {
+            background: var(--success);
+            box-shadow: 0 0 6px rgba(16, 185, 129, 0.5);
+            animation: none;
+        }
+
+        @keyframes statusPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .turnstile-subtitle {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .turnstile-inner.verified .turnstile-subtitle {
+            color: var(--success);
+        }
+
+        .turnstile-widget {
+            flex-shrink: 0;
+            min-width: 300px;
+        }
+
+        .turnstile-widget iframe {
+            border-radius: 10px !important;
+        }
+
+        @media (max-width: 560px) {
+            .turnstile-inner {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 20px 16px;
+            }
+            .turnstile-left {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Game Grid Layout */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 10px;
+            align-items: start;
+        }
+
+        /* Game Card Style */
+        .game-card {
+            background: var(--bg-secondary);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--radius);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .game-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 15px rgba(59, 130, 246, 0.05);
+        }
+
+        .game-card-banner {
+            height: 160px;
+            position: relative;
+            overflow: hidden;
+            background: #111;
+            flex-shrink: 0;
+        }
+
+        .game-card-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .game-card:hover .game-card-banner img {
+            transform: scale(1.05);
+        }
+
+        /* Remove gradient overlay to show full image clearly */
+        .game-card-banner::after {
+            display: none;
+        }
+
+        .banner-badge-link {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(13, 15, 20, 0.9);
+            border: 1px solid rgba(245, 158, 11, 0.6);
+            color: #fbbf24;
+            padding: 5px 14px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 700;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            letter-spacing: 0.5px;
+        }
+
+        .game-card-body {
+            padding: 16px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .game-card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.4;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .game-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            font-size: 13px;
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-primary);
+            padding: 4px 10px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .meta-item i {
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+        .game-card-actions {
+            padding: 0 16px 12px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-card {
+            flex: 1;
+            padding: 12px;
+            font-size: 15px;
+            font-weight: 700;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border: none;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-card.get {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn-card.get:hover {
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .btn-card.buy {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-card.buy:hover {
+            box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .game-card-footer, .game-card-footer-placeholder {
+            height: 54px;
+            box-sizing: border-box;
+            flex-shrink: 0;
+        }
+
+        .game-card-footer {
+            padding: 10px 16px;
+            border-top: 1px solid var(--border-primary);
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .game-card-footer-placeholder {
+            background: transparent;
+        }
+
+        .btn-card-details {
+            width: 100%;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(37, 99, 235, 0.02) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+            font-size: 13.5px;
+            font-weight: 700;
+            padding: 7px 16px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.25s ease;
+        }
+
+        .btn-card-details:hover {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(37, 99, 235, 0.05) 100%);
+            border-color: rgba(59, 130, 246, 0.45);
+            color: var(--text-primary);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+        }
+
+        .btn-card-details i {
+            transition: transform 0.25s;
+            font-size: 11px;
+        }
+
+        .btn-card-details.active i {
+            transform: rotate(180deg);
+        }
+
+        /* Expanded Details Pane */
+        .game-card-details-pane {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.08) 100%);
+            border-top: 1px solid var(--border-primary);
+        }
+
+        .details-pane-inner {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Warning / Note Banner */
+        .details-note {
+            background: rgba(245, 158, 11, 0.06);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            border-left: 3px solid #f59e0b;
+            border-radius: var(--radius-sm);
+            padding: 12px 14px;
+            font-size: 13px;
+            color: #fbbf24;
+            display: flex;
+            gap: 10px;
+            line-height: 1.55;
+        }
+
+        .details-note i {
+            margin-top: 3px;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        /* Features List Container */
+        .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-height: 280px;
+            overflow-y: auto;
+            padding-right: 6px;
+        }
+
+        /* Custom Scrollbar for Features List */
+        .features-list::-webkit-scrollbar {
+            width: 4px;
+        }
+        .features-list::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .features-list::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        .features-list::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Each Feature Group Card */
+        .feature-group {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-left: 3px solid var(--accent);
+            border-radius: 10px;
+            padding: 16px 18px;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .feature-group:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-left-color: #60a5fa;
+        }
+
+        /* Group Title */
+        .feature-group h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0.01em;
+        }
+
+        .feature-group h4 i {
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent-subtle);
+            color: var(--accent);
+            border-radius: 8px;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        /* Feature Items - Clean Vertical List Rows */
+        .feature-group ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .feature-group li {
+            font-size: 13.5px;
+            font-weight: 500;
+            color: #d4d4d8;
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            max-width: 100%;
+        }
+
+        .feature-group li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-group li span {
+            display: inline-flex;
+            align-items: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .feature-group li:hover {
+            color: var(--text-primary);
+            padding-left: 4px;
+        }
+
+        .feature-group li i {
+            color: var(--success);
+            font-size: 11px;
+            flex-shrink: 0;
+            transition: transform 0.2s ease;
+        }
+
+        .feature-group li:hover i {
+            transform: scale(1.15);
+        }
+
+        /* VIP Feature Styling */
+        .feature-group li.is-vip {
+            color: #f472b6;
+        }
+
+        .feature-group li.is-vip i {
+            color: #ec4899;
+        }
+
+        /* VIP Badge */
+        .vip-tag {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+            font-size: 9px;
+            padding: 2px 6px;
+            background: linear-gradient(135deg, #ec4899 0%, #a855f7 100%);
+            border-radius: 10px;
+            color: white;
+            font-weight: 700;
+            margin-left: 6px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            vertical-align: middle;
+        }
+
+        /* Download Section */
+        .details-download {
+            background: rgba(16, 185, 129, 0.04);
+            border: 1px solid rgba(16, 185, 129, 0.12);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: stretch;
+        }
+
+        .version-info {
+            font-size: 13.5px;
+            color: var(--text-secondary);
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .version-info strong {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        /* Download CTA Button */
+        .btn-download {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.02em;
+        }
+
+        .btn-download::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-download:hover::before {
+            left: 100%;
+        }
+
+        .btn-download:hover {
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);
+            transform: translateY(-2px);
+        }
+
+        .btn-download i {
+            font-size: 16px;
+        }
+
+        /* Help Modal Box */
+        .help-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1100;
+            padding: 20px;
+        }
+
+        .help-modal.show {
+            display: flex;
+        }
+
+        .help-modal-content {
+            background: #0f0f10;
+            border: 1px solid var(--border-secondary);
+            border-radius: var(--radius);
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            animation: modalFadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        @keyframes modalFadeIn {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .help-modal-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-primary);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .help-modal-header h3 {
+            font-size: 16px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .close-modal {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 20px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-modal:hover {
+            color: var(--text-primary);
+        }
+
+        .help-modal-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .guide-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .guide-step {
+            display: flex;
+            gap: 12px;
+        }
+
+        .step-num {
+            width: 24px;
+            height: 24px;
+            background: var(--accent-subtle);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .step-text {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .support-section {
+            border-top: 1px solid var(--border-primary);
+            padding-top: 20px;
+        }
+
+        .support-section h4 {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .support-section p {
+            font-size: 12.5px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .support-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px;
+            border-radius: var(--radius-sm);
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(135deg, #229ED9 0%, #0088cc 100%);
+            box-shadow: 0 4px 12px rgba(34, 158, 217, 0.2);
+            transition: all 0.2s;
+        }
+
+        .support-btn:hover {
+            box-shadow: 0 6px 16px rgba(34, 158, 217, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .support-btn i {
+            transition: transform 0.3s;
+        }
+
+        .support-btn:hover i {
+            transform: translate(3px, -2px);
+        }
+
+        /* Empty & Footer States */
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--radius);
+        }
+
+        .empty-state i {
+            font-size: 40px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .empty-state h3 {
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+
+        .empty-state p {
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 48px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Loading Overlay */
+        .loading-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1200;
+        }
+
+        .loading-overlay.show {
+            display: flex;
+        }
+
+        .loading-card {
+            background: #0f0f10;
+            border: 1px solid var(--border-primary);
+            border-radius: var(--radius);
+            padding: 32px 40px;
+            text-align: center;
+            max-width: 320px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border-secondary);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 16px;
+        }
+
+        .loading-text {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+
+        .loading-subtext {
+            font-size: 12.5px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 992px) {
+            .games-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
+        }
+
+        @media (max-width: 640px) {
+            body { padding: 16px; }
+            .shop-header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+                padding: 16px;
+            }
+            .search-box {
+                max-width: 100%;
+            }
+            .btn-help {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Hack Modal Box */
+        .hack-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(8, 9, 12, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1100;
+            padding: 24px;
+        }
+
+        .hack-modal.show {
+            display: flex;
+        }
+
+        .hack-modal-content {
+            background: rgba(18, 20, 29, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            max-width: 550px;
+            width: 100%;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8), 0 0 50px rgba(59, 130, 246, 0.05);
+            animation: modalFadeIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            max-height: 90vh;
+        }
+
+        .hack-modal-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(0, 0, 0, 0.15);
+        }
+
+        .hack-modal-header h3 {
+            font-size: 18px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hack-modal-header .close-modal {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-secondary);
+            font-size: 18px;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s ease;
+        }
+
+        .hack-modal-header .close-modal:hover {
+            background: rgba(239, 68, 68, 0.15);
+            border-color: rgba(239, 68, 68, 0.3);
+            color: #f87171;
+            transform: rotate(90deg);
+        }
+
+        .hack-modal-body {
+            padding: 24px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Custom scrollbar for premium hack modal body */
+        .hack-modal-body::-webkit-scrollbar {
+            width: 6px;
+        }
+        .hack-modal-body::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .hack-modal-body::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+        }
+        .hack-modal-body::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Premium inner styles overrides */
+        .hack-modal-content .details-note {
+            background: rgba(245, 158, 11, 0.05);
+            border: 1px solid rgba(245, 158, 11, 0.15);
+            border-left: 4px solid #f59e0b;
+            border-radius: 12px;
+            padding: 14px 18px;
+            font-size: 13.5px;
+            color: #fbbf24;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.05);
+        }
+
+        .hack-modal-content .features-list {
+            max-height: 380px;
+            gap: 16px;
+            padding-right: 4px;
+        }
+
+        .hack-modal-content .features-list::-webkit-scrollbar {
+            width: 5px;
+        }
+        .hack-modal-content .features-list::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .hack-modal-content .feature-group {
+            background: rgba(255, 255, 255, 0.015);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-left: 4px solid var(--accent);
+            border-radius: 14px;
+            padding: 18px 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .hack-modal-content .feature-group:hover {
+            background: rgba(255, 255, 255, 0.035);
+            border-left-color: #60a5fa;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3), 0 0 15px rgba(96, 165, 250, 0.05);
+        }
+
+        .hack-modal-content .feature-group h4 {
+            font-size: 15.5px;
+            margin-bottom: 14px;
+            letter-spacing: 0.02em;
+        }
+
+        .hack-modal-content .feature-group h4 i {
+            background: rgba(59, 130, 246, 0.12);
+            color: #60a5fa;
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            font-size: 13px;
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.1);
+        }
+
+        .hack-modal-content .feature-group li {
+            padding: 10px 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.03);
+            font-size: 14px;
+            color: #e4e4e7;
+        }
+
+        .hack-modal-content .feature-group li:hover {
+            padding-left: 6px;
+            color: #fff;
+        }
+
+        .hack-modal-content .feature-group li i {
+            font-size: 12px;
+            color: #34d399;
+        }
+
+        /* VIP Premium Glow inside modal */
+        .hack-modal-content .feature-group li.is-vip {
+            color: #f472b6;
+            font-weight: 600;
+            text-shadow: 0 0 12px rgba(244, 114, 182, 0.2);
+        }
+
+        .hack-modal-content .feature-group li.is-vip i {
+            color: #f472b6;
+            filter: drop-shadow(0 0 4px rgba(244, 114, 182, 0.6));
+        }
+
+        /* Premium Download Footer Area */
+        .hack-modal-content .details-download {
+            background: rgba(255, 255, 255, 0.015);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
+            margin-top: 8px;
+        }
+
+        .hack-modal-content .btn-download {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 700;
+            padding: 16px 24px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
+        }
+
+        .hack-modal-content .btn-download:hover {
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.45);
+            transform: translateY(-2px);
+        }
+
+        .hack-modal-content .btn-download:active {
+            transform: translateY(0);
+        }
+
+        .hack-modal-content .version-info {
+            font-size: 13.5px;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Shop Header -->
+        <div class="shop-header">
+            <div class="brand-info">
+                                    <img src="https://panel.onlytris.io.vn/assets/images/favicon.png" alt="logo" class="brand-img">
+                                <h2>ONLYTRIS PANEL</h2>
+            </div>
+            
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="gameSearch" placeholder="Tìm kiếm game..." onkeyup="searchGames()">
+            </div>
+            
+            <div class="header-actions">
+                <button class="btn-help" onclick="openHelpModal()">
+                    <i class="fas fa-question-circle"></i> Trợ Giúp
+                </button>
+            </div>
+        </div>
+
+        <!-- Section Title -->
+        <div class="section-title">
+            <h1>Danh Sách Game</h1>
+            <p>Chọn game bên dưới để lấy key miễn phí hoặc tải bản hack mới nhất</p>
+        </div>
+
+        <!-- Turnstile Verification -->
+        <div class="turnstile-banner">
+            <div class="turnstile-inner" id="turnstileContainer">
+                <div class="turnstile-left">
+                    <div class="turnstile-icon">
+                        <i class="fas fa-shield-alt" id="turnstileIcon"></i>
+                    </div>
+                    <div class="turnstile-text">
+                        <div class="turnstile-title">
+                            <span id="turnstileTitle">Xác minh bảo mật</span>
+                            <span class="turnstile-status" id="turnstileStatus"></span>
+                        </div>
+                        <div class="turnstile-subtitle" id="turnstileSubtitle">Hoàn thành xác minh bên phải để mở khóa Get Key</div>
+                    </div>
+                </div>
+                <div class="turnstile-widget">
+                    <div class="cf-turnstile" id="turnstile-box"
+                         data-sitekey="0x4AAAAAACGAQppv0cG0heOE"
+                         data-theme="dark"
+                         data-size="flexible"
+                         data-callback="onTurnstileSuccess"
+                         data-expired-callback="onTurnstileExpired"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid Cards -->
+        <div class="games-grid" id="gamesGrid">
+                        <div class="game-card" data-name="zingspeed | speed drifter">
+                <!-- Card Banner -->
+                <div class="game-card-banner">
+                    <img src="https://play-lh.googleusercontent.com/PPA7szoWNyYV5La9IHwQHBDhe4vLFwdW_L_BB7AC9TjgkIoLD9uESGoOm0N7PG086y9_yJkukKon5URyA6RoxA" alt="ZingSpeed | Speed Drifter" onerror="this.onerror=null; this.src='../assets/icon/default-game.png';">
+                                            <span class="banner-badge-link">
+                            <i class="fas fa-bolt"></i>
+                            1 liên kết
+                        </span>
+                                    </div>
+
+                <!-- Card Body -->
+                <div class="game-card-body">
+                    <h3 class="game-card-title" title="ZingSpeed | Speed Drifter">ZingSpeed | Speed Drifter</h3>
+                    <div class="game-card-meta">
+                        <span class="meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span>24h</span>
+                        </span>
+                        <span class="meta-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>1 Máy</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Card Actions -->
+                <div class="game-card-actions">
+                                            <a href="https://panel.onlytris.io.vn/store?user=tePHosbvWpEozqJ4gZAawA&game=com.vng.speedvn"
+                           class="btn-card buy" target="_blank">
+                            <i class="fas fa-shopping-cart"></i>
+                            Mua Key
+                        </a>
+                                        
+                                            <button class="btn-card get" onclick="getkey('com.vng.speedvn')">
+                            <i class="fas fa-key"></i>
+                            Lấy Key                        </button>
+                                    </div>
+
+                <!-- Card Details Toggle (if hack exists) -->
+                                    <div class="game-card-footer">
+                        <button class="btn-card-details" onclick='openHackModal({&quot;name&quot;:&quot;ZingSpeed | Speed Drifter&quot;,&quot;icon&quot;:&quot;https:\/\/play-lh.googleusercontent.com\/PPA7szoWNyYV5La9IHwQHBDhe4vLFwdW_L_BB7AC9TjgkIoLD9uESGoOm0N7PG086y9_yJkukKon5URyA6RoxA&quot;,&quot;note&quot;:&quot;&quot;,&quot;features&quot;:[{&quot;title&quot;:&quot;Chính&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;CWW Nhanh&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Full Nitro + H2O&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Full Mini Boost&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Ra Trận Nhanh&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Gia Tốc Nhanh&quot;,&quot;vip&quot;:false}]},{&quot;title&quot;:&quot;Tốc Biến&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;Tốc Biến Nhấn Phanh&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Tốc Biến Nhấn Drift&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Tuỳ Chỉnh Tốc Độ Tốc Biến&quot;,&quot;vip&quot;:false}]},{&quot;title&quot;:&quot;Phụ&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;Hiển Thị Time Map&quot;,&quot;vip&quot;:true}]}],&quot;download_url&quot;:&quot;https:\/\/drive.google.com\/file\/d\/1Qe57EPPiJQIKrhwzG-8WMVNqLHFdCWHN\/view?usp=drivesdk&quot;,&quot;version&quot;:&quot;1.0&quot;,&quot;download_label&quot;:&quot;Tải Xuống Ngay&quot;})'>
+                            <i class="fas fa-download"></i> Tải Hack & Tính Năng
+                        </button>
+                    </div>
+                            </div>
+                        <div class="game-card" data-name="mobile legends bang bang">
+                <!-- Card Banner -->
+                <div class="game-card-banner">
+                    <img src="https://play-lh.googleusercontent.com/0gB6KEvQzyQXS6Uscx7HNjjlRMRUzEvYFqWr0TlmwHw6cw3nNRNSR9xChp-EUrk3Cq1lqTlsE1DbPgc97YClXVU=w256" alt="Mobile Legends Bang Bang" onerror="this.onerror=null; this.src='../assets/icon/default-game.png';">
+                                            <span class="banner-badge-link">
+                            <i class="fas fa-bolt"></i>
+                            1 liên kết
+                        </span>
+                                    </div>
+
+                <!-- Card Body -->
+                <div class="game-card-body">
+                    <h3 class="game-card-title" title="Mobile Legends Bang Bang">Mobile Legends Bang Bang</h3>
+                    <div class="game-card-meta">
+                        <span class="meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span>24h</span>
+                        </span>
+                        <span class="meta-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>1 Máy</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Card Actions -->
+                <div class="game-card-actions">
+                                            <a href="https://panel.onlytris.io.vn/store?user=tePHosbvWpEozqJ4gZAawA&game=com.mobile.legends"
+                           class="btn-card buy" target="_blank">
+                            <i class="fas fa-shopping-cart"></i>
+                            Mua Key
+                        </a>
+                                        
+                                            <button class="btn-card get" onclick="getkey('com.mobile.legends')">
+                            <i class="fas fa-key"></i>
+                            Lấy Key                        </button>
+                                    </div>
+
+                <!-- Card Details Toggle (if hack exists) -->
+                                    <div class="game-card-footer">
+                        <button class="btn-card-details" onclick='openHackModal({&quot;name&quot;:&quot;Mobile Legends Bang Bang&quot;,&quot;icon&quot;:&quot;https:\/\/play-lh.googleusercontent.com\/0gB6KEvQzyQXS6Uscx7HNjjlRMRUzEvYFqWr0TlmwHw6cw3nNRNSR9xChp-EUrk3Cq1lqTlsE1DbPgc97YClXVU=w256&quot;,&quot;note&quot;:&quot;&quot;,&quot;features&quot;:[{&quot;title&quot;:&quot;Draw ESP&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;ESP Line&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Box&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Health&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Icon&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Minimap&quot;,&quot;vip&quot;:false}]},{&quot;title&quot;:&quot;Room Info&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;Show Enitity Name&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Show Enitity Hero&quot;,&quot;vip&quot;:false}]}],&quot;download_url&quot;:&quot;https:\/\/t.me\/OnlyTris_Download\/&quot;,&quot;version&quot;:&quot;1.0&quot;,&quot;download_label&quot;:&quot;Tải Xuống Ngay&quot;})'>
+                            <i class="fas fa-download"></i> Tải Hack & Tính Năng
+                        </button>
+                    </div>
+                            </div>
+                        <div class="game-card" data-name="liên quân mobile">
+                <!-- Card Banner -->
+                <div class="game-card-banner">
+                    <img src="https://img.tapimg.net/market/images/4450f6976373fd3d62862495acc87264.png" alt="Liên Quân Mobile" onerror="this.onerror=null; this.src='../assets/icon/default-game.png';">
+                                            <span class="banner-badge-link">
+                            <i class="fas fa-bolt"></i>
+                            1 liên kết
+                        </span>
+                                    </div>
+
+                <!-- Card Body -->
+                <div class="game-card-body">
+                    <h3 class="game-card-title" title="Liên Quân Mobile">Liên Quân Mobile</h3>
+                    <div class="game-card-meta">
+                        <span class="meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span>24h</span>
+                        </span>
+                        <span class="meta-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>1 Máy</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Card Actions -->
+                <div class="game-card-actions">
+                                            <a href="https://panel.onlytris.io.vn/store?user=tePHosbvWpEozqJ4gZAawA&game=com.garena.game.kgvn%2Ccom.garena.game.kgvo"
+                           class="btn-card buy" target="_blank">
+                            <i class="fas fa-shopping-cart"></i>
+                            Mua Key
+                        </a>
+                                        
+                                            <button class="btn-card get" onclick="getkey('com.garena.game.kgvn,com.garena.game.kgvo')">
+                            <i class="fas fa-key"></i>
+                            Lấy Key                        </button>
+                                    </div>
+
+                <!-- Card Details Toggle (if hack exists) -->
+                                    <div class="game-card-footer">
+                        <button class="btn-card-details" onclick='openHackModal({&quot;name&quot;:&quot;Liên Quân Mobile&quot;,&quot;icon&quot;:&quot;https:\/\/img.tapimg.net\/market\/images\/4450f6976373fd3d62862495acc87264.png&quot;,&quot;note&quot;:&quot;&quot;,&quot;features&quot;:[{&quot;title&quot;:&quot;Draw ESP&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;ESP Line&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Box&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Monster&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Minimap&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Drone View&quot;,&quot;vip&quot;:false}]}],&quot;download_url&quot;:&quot;https:\/\/t.me\/OnlyTris_Download\/&quot;,&quot;version&quot;:&quot;1.0&quot;,&quot;download_label&quot;:&quot;Tải Xuống Ngay&quot;})'>
+                            <i class="fas fa-download"></i> Tải Hack & Tính Năng
+                        </button>
+                    </div>
+                            </div>
+                        <div class="game-card" data-name="bloodstrike">
+                <!-- Card Banner -->
+                <div class="game-card-banner">
+                    <img src="http://cdn.onlytris.io.vn/lib/bs.png" alt="BloodStrike" onerror="this.onerror=null; this.src='../assets/icon/default-game.png';">
+                                            <span class="banner-badge-link">
+                            <i class="fas fa-bolt"></i>
+                            1 liên kết
+                        </span>
+                                    </div>
+
+                <!-- Card Body -->
+                <div class="game-card-body">
+                    <h3 class="game-card-title" title="BloodStrike">BloodStrike</h3>
+                    <div class="game-card-meta">
+                        <span class="meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span>24h</span>
+                        </span>
+                        <span class="meta-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>1 Máy</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Card Actions -->
+                <div class="game-card-actions">
+                                            <a href="https://panel.onlytris.io.vn/store?user=tePHosbvWpEozqJ4gZAawA&game=com.netease.newspike"
+                           class="btn-card buy" target="_blank">
+                            <i class="fas fa-shopping-cart"></i>
+                            Mua Key
+                        </a>
+                                        
+                                            <button class="btn-card get" onclick="getkey('com.netease.newspike')">
+                            <i class="fas fa-key"></i>
+                            Lấy Key                        </button>
+                                    </div>
+
+                <!-- Card Details Toggle (if hack exists) -->
+                                    <div class="game-card-footer">
+                        <button class="btn-card-details" onclick='openHackModal({&quot;name&quot;:&quot;BloodStrike&quot;,&quot;icon&quot;:&quot;http:\/\/cdn.onlytris.io.vn\/lib\/bs.png&quot;,&quot;note&quot;:&quot;&quot;,&quot;features&quot;:[],&quot;download_url&quot;:&quot;&quot;,&quot;version&quot;:&quot;1.0&quot;,&quot;download_label&quot;:&quot;Tải Xuống Ngay&quot;})'>
+                            <i class="fas fa-download"></i> Tải Hack & Tính Năng
+                        </button>
+                    </div>
+                            </div>
+                        <div class="game-card" data-name="8 ball pool">
+                <!-- Card Banner -->
+                <div class="game-card-banner">
+                    <img src="https://m.media-amazon.com/images/I/81OMgLAhLCL.png" alt="8 Ball Pool" onerror="this.onerror=null; this.src='../assets/icon/default-game.png';">
+                                            <span class="banner-badge-link">
+                            <i class="fas fa-bolt"></i>
+                            1 liên kết
+                        </span>
+                                    </div>
+
+                <!-- Card Body -->
+                <div class="game-card-body">
+                    <h3 class="game-card-title" title="8 Ball Pool">8 Ball Pool</h3>
+                    <div class="game-card-meta">
+                        <span class="meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span>24h</span>
+                        </span>
+                        <span class="meta-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>1 Máy</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Card Actions -->
+                <div class="game-card-actions">
+                                            <a href="https://panel.onlytris.io.vn/store?user=tePHosbvWpEozqJ4gZAawA&game=com.miniclip.eightballpool"
+                           class="btn-card buy" target="_blank">
+                            <i class="fas fa-shopping-cart"></i>
+                            Mua Key
+                        </a>
+                                        
+                                            <button class="btn-card get" onclick="getkey('com.miniclip.eightballpool')">
+                            <i class="fas fa-key"></i>
+                            Lấy Key                        </button>
+                                    </div>
+
+                <!-- Card Details Toggle (if hack exists) -->
+                                    <div class="game-card-footer">
+                        <button class="btn-card-details" onclick='openHackModal({&quot;name&quot;:&quot;8 Ball Pool&quot;,&quot;icon&quot;:&quot;https:\/\/m.media-amazon.com\/images\/I\/81OMgLAhLCL.png&quot;,&quot;note&quot;:&quot;&quot;,&quot;features&quot;:[],&quot;download_url&quot;:&quot;&quot;,&quot;version&quot;:&quot;1.0&quot;,&quot;download_label&quot;:&quot;Tải Xuống Ngay&quot;})'>
+                            <i class="fas fa-download"></i> Tải Hack & Tính Năng
+                        </button>
+                    </div>
+                            </div>
+            
+                    </div>
+
+        <p class="footer">&copy; 2026 ONLYTRIS PANEL</p>
+    </div>
+
+    <!-- Help Modal Box -->
+    <div class="help-modal" id="helpModal">
+        <div class="help-modal-content">
+            <div class="help-modal-header">
+                <h3><i class="fas fa-question-circle text-primary"></i> Hướng Dẫn & Hỗ Trợ</h3>
+                <button class="close-modal" onclick="closeHelpModal()">&times;</button>
+            </div>
+            <div class="help-modal-body">
+                <div class="guide-steps">
+                    <div class="guide-step">
+                        <span class="step-num">1</span>
+                        <div class="step-text">Chọn game trong danh sách bên cạnh và nhấn <strong>Lấy Key</strong> hoặc <strong>Mua Key</strong>.</div>
+                    </div>
+                    <div class="guide-step">
+                        <span class="step-num">2</span>
+                        <div class="step-text">Vượt qua các liên kết rút gọn quảng cáo để xác thực thiết bị của bạn.</div>
+                    </div>
+                    <div class="guide-step">
+                        <span class="step-num">3</span>
+                        <div class="step-text">Hệ thống tự động chuyển hướng quay lại trang và in Key cho bạn.</div>
+                    </div>
+                </div>
+                
+                <div class="support-section">
+                    <h4><i class="fab fa-telegram-plane"></i> Kênh Hỗ Trợ</h4>
+                    <p>Nếu bạn gặp sự cố khi vượt link, lỗi key hoặc muốn cập nhật tính năng mới:</p>
+                    <a href="https://t.me/OnlyTris_Channel" target="_blank" class="support-btn">
+                        <i class="fab fa-telegram-plane"></i> Tham gia Telegram
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hack Modal Box -->
+    <div class="hack-modal" id="hackModal">
+        <div class="hack-modal-content">
+            <div class="hack-modal-header">
+                <h3 id="hackModalTitle"><i class="fas fa-cube text-primary"></i> Tính năng Hack</h3>
+                <button class="close-modal" onclick="closeHackModal()">&times;</button>
+            </div>
+            <div class="hack-modal-body" id="hackModalBody">
+                <!-- Content injected dynamically via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-card">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Đang tạo Key...</div>
+            <div class="loading-subtext">Vui lòng chờ trong giây lát</div>
+        </div>
+    </div>
+
+    <script>
+        function showLoading() {
+            document.getElementById('loadingOverlay').classList.add('show');
+        }
+
+        function hideLoading() {
+            document.getElementById('loadingOverlay').classList.remove('show');
+        }
+
+        function getkey(type) {
+            var token = window._turnstileToken;
+            if (!token) {
+                alert('Vui lòng xác minh Turnstile (ô checkbox phía trên) trước khi lấy key.');
+                // Scroll to turnstile widget
+                var banner = document.querySelector('.turnstile-banner');
+                if (banner) banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            showLoading();
+            var xhr = new XMLHttpRequest();
+            var apiCode = "OnlyTris";
+            xhr.open("GET", "https://panel.onlytris.io.vn/GETKEY/" + encodeURIComponent(apiCode) + "&type=" + encodeURIComponent(type), true);
+            xhr.setRequestHeader('X-Turnstile-Token', token);
+            xhr.onload = function () {
+                hideLoading();
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    window.location.href = xhr.responseText;
+                } else {
+                    alert('Không thể tạo key. Vui lòng thử lại.');
+                }
+                // Reset turnstile for next use (token is single-use)
+                window._turnstileToken = null;
+                if (typeof turnstile !== 'undefined') {
+                    turnstile.reset('#turnstile-box');
+                }
+                onTurnstileExpired();
+            };
+            xhr.onerror = function () {
+                hideLoading();
+                alert('Lỗi mạng. Vui lòng kiểm tra kết nối.');
+            };
+            xhr.send();
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        function openHackModal(data) {
+            // Set title and icon
+            var headerTitle = document.getElementById('hackModalTitle');
+            headerTitle.innerHTML = '';
+            if (data.icon) {
+                var img = document.createElement('img');
+                img.src = data.icon;
+                img.style.width = '24px';
+                img.style.height = '24px';
+                img.style.borderRadius = '4px';
+                img.style.objectFit = 'cover';
+                img.style.marginRight = '8px';
+                headerTitle.appendChild(img);
+            }
+            var titleSpan = document.createElement('span');
+            titleSpan.textContent = 'Tính năng Hack: ' + data.name;
+            headerTitle.appendChild(titleSpan);
+
+            // Set body content
+            var modalBody = document.getElementById('hackModalBody');
+            modalBody.innerHTML = '';
+
+            // Note
+            if (data.note) {
+                var noteDiv = document.createElement('div');
+                noteDiv.className = 'details-note';
+                noteDiv.style.marginBottom = '16px';
+                noteDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i><span>' + escapeHtml(data.note) + '</span>';
+                modalBody.appendChild(noteDiv);
+            }
+
+            // Features List
+            if (data.features && data.features.length > 0) {
+                var featuresDiv = document.createElement('div');
+                featuresDiv.className = 'features-list';
+                
+                data.features.forEach(function(group) {
+                    var groupDiv = document.createElement('div');
+                    groupDiv.className = 'feature-group';
+                    groupDiv.style.marginBottom = '12px';
+                    
+                    var h4 = document.createElement('h4');
+                    h4.innerHTML = '<i class="fas fa-cube"></i> ' + escapeHtml(group.title || '');
+                    groupDiv.appendChild(h4);
+                    
+                    if (group.items && group.items.length > 0) {
+                        var ul = document.createElement('ul');
+                        group.items.forEach(function(item) {
+                            var li = document.createElement('li');
+                            var isVip = !!item.vip;
+                            if (isVip) {
+                                li.className = 'is-vip';
+                            }
+                            li.title = (item.text || '') + (isVip ? ' (VIP)' : '');
+                            
+                            var icon = document.createElement('i');
+                            icon.className = isVip ? 'fas fa-crown' : 'fas fa-check';
+                            li.appendChild(icon);
+                            
+                            var span = document.createElement('span');
+                            span.textContent = ' ' + (item.text || '');
+                            li.appendChild(span);
+                            
+                            ul.appendChild(li);
+                        });
+                        groupDiv.appendChild(ul);
+                    }
+                    featuresDiv.appendChild(groupDiv);
+                });
+                modalBody.appendChild(featuresDiv);
+            }
+
+            // Download Area
+            if (data.download_url) {
+                var downloadDiv = document.createElement('div');
+                downloadDiv.className = 'details-download';
+                downloadDiv.style.marginTop = '16px';
+                downloadDiv.innerHTML = `
+                    <div class="version-info">Phiên bản: <strong>v${escapeHtml(data.version)}</strong></div>
+                    <a href="${escapeHtml(data.download_url)}" target="_blank" class="btn-download">
+                        <i class="fas fa-download"></i>
+                        ${escapeHtml(data.download_label || 'Tải Ngay')}
+                    </a>
+                `;
+                modalBody.appendChild(downloadDiv);
+            }
+
+            // Show modal
+            document.getElementById('hackModal').classList.add('show');
+        }
+
+        function closeHackModal() {
+            document.getElementById('hackModal').classList.remove('show');
+        }
+
+        function openHelpModal() {
+            document.getElementById('helpModal').classList.add('show');
+        }
+
+        function closeHelpModal() {
+            document.getElementById('helpModal').classList.remove('show');
+        }
+
+        // Close modal when clicking outside content box
+        window.onclick = function(event) {
+            var helpModal = document.getElementById('helpModal');
+            var hackModal = document.getElementById('hackModal');
+            if (event.target == helpModal) {
+                helpModal.classList.remove('show');
+            }
+            if (event.target == hackModal) {
+                hackModal.classList.remove('show');
+            }
+        }
+
+        // Search Games Filter
+        function searchGames() {
+            var input = document.getElementById('gameSearch');
+            var filter = input.value.toLowerCase().trim();
+            var grid = document.getElementById('gamesGrid');
+            var cards = grid.getElementsByClassName('game-card');
+            var emptyStateExists = document.getElementById('emptySearchState');
+            var visibleCount = 0;
+            
+            for (var i = 0; i < cards.length; i++) {
+                var name = cards[i].getAttribute('data-name') || '';
+                if (name.indexOf(filter) > -1) {
+                    cards[i].style.display = "";
+                    visibleCount++;
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+
+            // Xử lý Empty State khi không tìm thấy game nào
+            if (visibleCount === 0) {
+                if (!emptyStateExists) {
+                    var emptyDiv = document.createElement('div');
+                    emptyDiv.id = 'emptySearchState';
+                    emptyDiv.className = 'empty-state';
+                    emptyDiv.innerHTML = '<i class="fas fa-search-minus"></i><h3>Không tìm thấy game</h3><p>Vui lòng thử tìm kiếm với từ khóa khác.</p>';
+                    grid.appendChild(emptyDiv);
+                } else {
+                    emptyStateExists.style.display = "";
+                }
+            } else {
+                if (emptyStateExists) {
+                    emptyStateExists.style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+
