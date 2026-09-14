@@ -570,245 +570,6 @@
             transform: rotate(180deg);
         }
 
-        /* Expanded Details Pane */
-        .game-card-details-pane {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            background: rgba(0, 0, 0, 0.4);
-            border-top: 1px solid var(--border-primary);
-        }
-
-        .details-pane-inner {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        /* Warning / Note Banner */
-        .details-note {
-            background: rgba(245, 158, 11, 0.06);
-            border: 1px solid rgba(245, 158, 11, 0.2);
-            border-left: 3px solid #f59e0b;
-            border-radius: var(--radius-sm);
-            padding: 12px 14px;
-            font-size: 13px;
-            color: #fbbf24;
-            display: flex;
-            gap: 10px;
-            line-height: 1.55;
-        }
-
-        .details-note i {
-            margin-top: 3px;
-            font-size: 14px;
-            flex-shrink: 0;
-        }
-
-        /* Features List Container */
-        .features-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            max-height: 280px;
-            overflow-y: auto;
-            padding-right: 6px;
-        }
-
-        .features-list::-webkit-scrollbar {
-            width: 4px;
-        }
-        .features-list::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-        }
-        .features-list::-webkit-scrollbar-thumb {
-            background: var(--accent);
-            border-radius: 10px;
-        }
-
-        .feature-group {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-left: 3px solid var(--accent);
-            border-radius: 10px;
-            padding: 16px 18px;
-            transition: border-color 0.2s, background 0.2s;
-        }
-
-        .feature-group:hover {
-            background: rgba(255, 0, 51, 0.05);
-            border-left-color: var(--accent);
-        }
-
-        .feature-group h4 {
-            font-size: 15px;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            letter-spacing: 0.01em;
-        }
-
-        .feature-group h4 i {
-            width: 28px;
-            height: 28px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--accent-subtle);
-            color: var(--accent);
-            border-radius: 8px;
-            font-size: 12px;
-            flex-shrink: 0;
-        }
-
-        .feature-group ul {
-            list-style: none;
-            padding-left: 0;
-            margin-bottom: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-        }
-
-        .feature-group li {
-            font-size: 13.5px;
-            font-weight: 500;
-            color: #d4d4d8;
-            padding: 8px 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
-            transition: all 0.2s ease;
-            white-space: nowrap;
-            max-width: 100%;
-        }
-
-        .feature-group li:last-child {
-            border-bottom: none;
-        }
-
-        .feature-group li span {
-            display: inline-flex;
-            align-items: center;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .feature-group li:hover {
-            color: var(--text-primary);
-            padding-left: 4px;
-        }
-
-        .feature-group li i {
-            color: var(--accent);
-            font-size: 11px;
-            flex-shrink: 0;
-            transition: transform 0.2s ease;
-        }
-
-        .feature-group li:hover i {
-            transform: scale(1.15);
-        }
-
-        .feature-group li.is-vip {
-            color: #ff0033;
-        }
-
-        .feature-group li.is-vip i {
-            color: #ff0033;
-        }
-
-        .vip-tag {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            white-space: nowrap;
-            font-size: 9px;
-            padding: 2px 6px;
-            background: var(--accent);
-            border-radius: 10px;
-            color: white;
-            font-weight: 700;
-            margin-left: 6px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            vertical-align: middle;
-            box-shadow: 0 0 6px var(--accent-glow);
-        }
-
-        .details-download {
-            background: rgba(255, 0, 51, 0.04);
-            border: 1px solid var(--border-primary);
-            border-radius: 12px;
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            align-items: stretch;
-        }
-
-        .version-info {
-            font-size: 13.5px;
-            color: var(--text-secondary);
-            text-align: center;
-            font-weight: 500;
-        }
-
-        .version-info strong {
-            color: var(--text-primary);
-            font-weight: 700;
-        }
-
-        .btn-download {
-            background: linear-gradient(135deg, #ff0033 0%, #cc0029 100%);
-            color: white;
-            padding: 14px 20px;
-            border-radius: 12px;
-            font-size: 15px;
-            font-weight: 700;
-            text-align: center;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            letter-spacing: 0.02em;
-        }
-
-        .btn-download::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .btn-download:hover::before {
-            left: 100%;
-        }
-
-        .btn-download:hover {
-            box-shadow: 0 6px 20px var(--accent-glow);
-            transform: translateY(-2px);
-        }
-
-        .btn-download i {
-            font-size: 16px;
-        }
-
         /* Help Modal Box */
         .help-modal {
             position: fixed;
@@ -1346,7 +1107,7 @@
                 <div class="game-card-body">
                     <h3 class="game-card-title" title="ZingSpeed | Speed Drifter">ZingSpeed | Speed Drifter</h3>
                     <div class="game-card-meta">
-                        <span class="meta-item"><i class="fas fa-clock"></i><span>24j</span></span>
+                        <span class="meta-item"><i class="fas fa-clock"></i><span>5j</span></span>
                         <span class="meta-item"><i class="fas fa-mobile-alt"></i><span>1 Perangkat</span></span>
                     </div>
                 </div>
@@ -1376,7 +1137,7 @@
                 <div class="game-card-body">
                     <h3 class="game-card-title" title="Mobile Legends Bang Bang">Mobile Legends Bang Bang</h3>
                     <div class="game-card-meta">
-                        <span class="meta-item"><i class="fas fa-clock"></i><span>24j</span></span>
+                        <span class="meta-item"><i class="fas fa-clock"></i><span>5j</span></span>
                         <span class="meta-item"><i class="fas fa-mobile-alt"></i><span>1 Perangkat</span></span>
                     </div>
                 </div>
@@ -1406,7 +1167,7 @@
                 <div class="game-card-body">
                     <h3 class="game-card-title" title="Liên Quân Mobile">Liên Quân Mobile</h3>
                     <div class="game-card-meta">
-                        <span class="meta-item"><i class="fas fa-clock"></i><span>24j</span></span>
+                        <span class="meta-item"><i class="fas fa-clock"></i><span>5j</span></span>
                         <span class="meta-item"><i class="fas fa-mobile-alt"></i><span>1 Perangkat</span></span>
                     </div>
                 </div>
@@ -1436,7 +1197,7 @@
                 <div class="game-card-body">
                     <h3 class="game-card-title" title="BloodStrike">BloodStrike</h3>
                     <div class="game-card-meta">
-                        <span class="meta-item"><i class="fas fa-clock"></i><span>24 Jam</span></span>
+                        <span class="meta-item"><i class="fas fa-clock"></i><span>5j</span></span>
                         <span class="meta-item"><i class="fas fa-mobile-alt"></i><span>1 Perangkat</span></span>
                     </div>
                 </div>
@@ -1466,7 +1227,7 @@
                 <div class="game-card-body">
                     <h3 class="game-card-title" title="8 Ball Pool">8 Ball Pool</h3>
                     <div class="game-card-meta">
-                        <span class="meta-item"><i class="fas fa-clock"></i><span>24 Jam</span></span>
+                        <span class="meta-item"><i class="fas fa-clock"></i><span>5j</span></span>
                         <span class="meta-item"><i class="fas fa-mobile-alt"></i><span>1 Perangkat</span></span>
                     </div>
                 </div>
@@ -1554,6 +1315,36 @@
             document.getElementById('loadingOverlay').classList.remove('show');
         }
 
+        /* --- LOGIKA BATASAN 3 KALI GET KEY DALAM 24 JAM --- */
+        function checkAndIncrementKeyLimit() {
+            var MAX_LIMIT = 3;
+            var LIMIT_TIME = 24 * 60 * 60 * 1000; // 24 Jam dalam milidetik
+            var now = Date.now();
+
+            var historyData = JSON.parse(localStorage.getItem('getkey_history') || '[]');
+            
+            // Filter pengambilan key yang dilakukan dalam 24 jam terakhir
+            historyData = historyData.filter(function(timestamp) {
+                return (now - timestamp) < LIMIT_TIME;
+            });
+
+            if (historyData.length >= MAX_LIMIT) {
+                var oldestTime = historyData[0];
+                var timeRemaining = LIMIT_TIME - (now - oldestTime);
+                
+                var hours = Math.floor(timeRemaining / (1000 * 60 * 60));
+                var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                
+                var timeText = (hours > 0 ? hours + " jam " : "") + minutes + " menit";
+                alert("Anda telah mencapai batas 3 kali ambil key dalam 24 jam. Silakan coba lagi dalam " + timeText + ".");
+                return false;
+            }
+
+            historyData.push(now);
+            localStorage.setItem('getkey_history', JSON.stringify(historyData));
+            return true;
+        }
+
         function getkey(type) {
             var token = window._turnstileToken;
             if (!token) {
@@ -1563,29 +1354,45 @@
                 return;
             }
 
+            // Periksa batasan 3 kali dalam 24 jam sebelum melanjutkan
+            if (!checkAndIncrementKeyLimit()) {
+                return;
+            }
+
             showLoading();
-            var xhr = new XMLHttpRequest();
-            var apiCode = "OnlyTris";
-            xhr.open("GET", "https://panel.onlytris.io.vn/GETKEY/" + encodeURIComponent(apiCode) + "&type=" + encodeURIComponent(type), true);
-            xhr.setRequestHeader('X-Turnstile-Token', token);
-            xhr.onload = function () {
-                hideLoading();
-                if (xhr.status >= 200 && xhr.status < 300) {
-                    window.location.href = xhr.responseText;
-                } else {
-                    alert('Gagal membuat key. Silakan coba lagi.');
+            
+            // Menggunakan struktur sistem get key terbaru dari onlytrisgetkeyv2.html
+            var user = "tePHosbvWpEozqJ4gZAawA";
+            var url = "https://panel.onlytris.io.vn/api/getkey?user=" + encodeURIComponent(user) + "&game=" + encodeURIComponent(type);
+
+            fetch(url, {
+                headers: {
+                    'X-Turnstile-Token': token
                 }
+            })
+            .then(function(res) {
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                return res.json();
+            })
+            .then(function(data) {
+                hideLoading();
+                if (data.status === 'success' && data.link) {
+                    window.location.href = data.link;
+                } else {
+                    alert('Gagal mengambil key: ' + (data.message || 'Respons tidak valid'));
+                }
+            })
+            .catch(function(err) {
+                hideLoading();
+                alert('Terjadi kesalahan saat mengambil key: ' + err.message);
+            })
+            .finally(function() {
                 window._turnstileToken = null;
                 if (typeof turnstile !== 'undefined') {
                     turnstile.reset('#turnstile-box');
                 }
                 onTurnstileExpired();
-            };
-            xhr.onerror = function () {
-                hideLoading();
-                alert('Kesalahan jaringan. Silakan periksa koneksi Anda.');
-            };
-            xhr.send();
+            });
         }
 
         function escapeHtml(str) {
